@@ -1,0 +1,28 @@
+.video{
+
+padding:80px 20px;
+text-align:center;
+
+}
+
+.video-container{
+
+position:relative;
+width:100%;
+max-width:900px;
+margin:auto;
+
+}
+
+.video-container iframe{
+
+width:100%;
+height:500px;
+
+}
+
+.youtube-subscribe{
+
+margin-top:30px;
+
+}
