@@ -2,195 +2,361 @@
 <html lang="ja">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>eivyx</title>
 
 <link rel="stylesheet" href="animation.css">
 <link rel="stylesheet" href="glitch.css">
 
 <style>
-/* --- ページ全体のスタイル --- */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+
+body{
+margin:0;
+font-family:Helvetica,Arial,sans-serif;
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
 }
 
-/* --- 中央表示用タイトル --- */
-h1#main-title {
-  font-size: 5vw !important;   /* 画面幅に応じて文字サイズ */
-  line-height: 1.2 !important;
-  text-align: center;
-  color: #333 !important;
-  margin: 20px 0 !important;
-  overflow: visible !important;
-  white-space: nowrap !important;
+/* HERO */
+
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
 }
 
-/* --- HEROセクション --- */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.6);
+transition:transform 0.2s;
 }
 
-.hero img.logo {
-  max-width: 200px;
-  margin-bottom: 20px;
+/* 動画背景 */
+
+.bg-video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0.2;
 }
 
-h1.glitch {
-  font-size: 5vw;       /* HERO 内アニメーション文字サイズ */
-  line-height: 1.2;
-  color: white;
-  margin: 0;
-  text-align: center;
-  white-space: nowrap;
+.hero-content{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
 }
 
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+h1{
+font-size:64px;
+letter-spacing:10px;
+margin:20px 0;
 }
 
-/* --- 背景動画 --- */
-.bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.2;
+.tag{
+opacity:0.7;
 }
 
-/* --- 外部CSSとの競合防止 --- */
-h1 { font-size: inherit; letter-spacing: normal; margin: 0; }
+/* SECTION */
+
+.section{
+padding:120px 20px;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MUSIC */
+
+iframe{
+margin-top:30px;
+border-radius:12px;
+}
+
+/* VIDEO */
+
+.video iframe{
+width:80%;
+max-width:800px;
+height:450px;
+}
+
+/* DISCOGRAPHY */
+
+.discography{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:60px;
+}
+
+.release{
+width:220px;
+}
+
+.release img{
+width:100%;
+border-radius:8px;
+}
+
+/* LINKS */
+
+.links{
+margin-top:40px;
+}
+
+.links a{
+margin:0 15px;
+color:white;
+text-decoration:none;
+font-size:18px;
+opacity:0.7;
+}
+
+.links a:hover{
+opacity:1;
+}
+
+footer{
+padding:40px;
+text-align:center;
+opacity:0.4;
+}
+
+/* BGM PLAYER */
+
+.bgm-player{
+
+position:fixed;
+bottom:20px;
+right:20px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(8px);
+padding:12px 18px;
+border-radius:30px;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:14px;
+
+}
+
+.bgm-player button{
+
+background:white;
+border:none;
+border-radius:20px;
+padding:6px 14px;
+cursor:pointer;
+
+}
 
 </style>
+
 </head>
 
 <body>
 
-<!-- ページ中央表示 -->
-<h1 id="main-title">eivyx</h1>
+<div class="paint-bg"></div>
 
-<!-- HERO セクション -->
+<!-- HERO -->
+
 <section class="hero">
-  <video autoplay muted loop playsinline class="bg-video">
-    <source src="noise.mp4" type="video/mp4">
-  </video>
 
-  <div class="hero-content">
-    <img src="eivyx-logo.png" class="logo">
-    <h1 class="glitch" data-text="eivyx">eivyx</h1>
-    <p class="tag">art rock from japan</p>
-  </div>
+<video autoplay muted loop playsinline class="bg-video">
+<source src="noise.mp4" type="video/mp4">
+</video>
+
+<img src="artist-photo.png">
+
+<div class="hero-content">
+
+<img src="eivyx-logo.png" class="logo">
+
+<h1 class="glitch" data-text="eivyx">eivyx</h1>
+
+<p class="tag">art rock from japan</p>
+
+</div>
+
 </section>
 
 <!-- MUSIC -->
+
 <section class="section">
-  <h2>MUSIC</h2>
-  <iframe
-    src="https://open.spotify.com/embed/track/"
-    width="320"
-    height="80"
-    frameborder="0">
-  </iframe>
+
+<h2>MUSIC</h2>
+
+<iframe
+src="https://open.spotify.com/embed/track/"
+width="320"
+height="80"
+frameborder="0">
+</iframe>
+
 </section>
 
 <!-- VIDEO -->
+
 <section class="section video">
-  <h2>VIDEO</h2>
-  <iframe
-    src="https://www.youtube.com/embed/ybKl1lU73Fc"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  </iframe>
+
+<h2>VIDEO</h2>
+
+<iframe
+src="https://www.youtube.com/embed/ybKl1lU73Fc"
+title="YouTube video player"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin"
+allowfullscreen>
+</iframe>
+
 </section>
 
 <!-- DISCOGRAPHY -->
+
 <section class="section">
-  <h2>DISCOGRAPHY</h2>
-  <div class="discography">
-    <div class="release">
-      <img src="cover1.jpg">
-      <p>EP 01</p>
-    </div>
-    <div class="release">
-      <img src="cover2.jpg">
-      <p>EP 02</p>
-    </div>
-  </div>
+
+<h2>DISCOGRAPHY</h2>
+
+<div class="discography">
+
+<div class="release">
+<img src="cover1.jpg">
+<p>EP 01</p>
+</div>
+
+<div class="release">
+<img src="cover2.jpg">
+<p>EP 02</p>
+</div>
+
+</div>
+
 </section>
 
 <!-- CONNECT -->
+
 <section class="section">
-  <h2>CONNECT</h2>
-  <div class="links">
-    <a href="#">Instagram</a>
-    <a href="#">YouTube</a>
-    <a href="#">Spotify</a>
-  </div>
+
+<h2>CONNECT</h2>
+
+<div class="links">
+
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+<a href="#">Spotify</a>
+
+</div>
+
 </section>
 
 <footer>
-  © eivyx
+
+© eivyx
+
 </footer>
 
+
 <!-- BGM -->
+
 <audio id="bgm" loop>
-  <source src="ambient.mp3" type="audio/mpeg">
+<source src="ambient.mp3" type="audio/mpeg">
 </audio>
 
 <div class="bgm-player">
-  <span>BGM</span>
-  <button onclick="playBGM()">Play</button>
-  <button onclick="stopBGM()">Stop</button>
+
+<span>BGM</span>
+
+<button onclick="playBGM()">Play</button>
+<button onclick="stopBGM()">Stop</button>
+
 </div>
 
+
 <script>
+
 /* スクロールフェード */
-const sections = document.querySelectorAll(".section");
-window.addEventListener("scroll", () => {
-  const trigger = window.innerHeight * 0.8;
-  sections.forEach(section => {
-    const top = section.getBoundingClientRect().top;
-    if (top < trigger) section.classList.add("show");
-  });
+
+const sections=document.querySelectorAll(".section");
+
+window.addEventListener("scroll",()=>{
+
+const trigger=window.innerHeight*0.8;
+
+sections.forEach(section=>{
+
+const top=section.getBoundingClientRect().top;
+
+if(top<trigger){
+
+section.classList.add("show");
+
+}
+
 });
 
+});
+
+
 /* BGM */
-const bgm = document.getElementById("bgm");
-function playBGM() {
-  bgm.volume = 0;
-  bgm.play();
-  let vol = 0;
-  const fade = setInterval(() => {
-    if (vol < 0.5) {
-      vol += 0.02;
-      bgm.volume = vol;
-    } else clearInterval(fade);
-  }, 100);
+
+const bgm=document.getElementById("bgm");
+
+function playBGM(){
+
+bgm.volume=0;
+
+bgm.play();
+
+let vol=0;
+
+const fade=setInterval(()=>{
+
+if(vol<0.5){
+
+vol+=0.02;
+
+bgm.volume=vol;
+
+}else{
+
+clearInterval(fade);
+
 }
-function stopBGM() { bgm.pause(); }
+
+},100);
+
+}
+
+function stopBGM(){
+
+bgm.pause();
+
+}
+
 </script>
 
 <script src="parallax.js"></script>
 <script src="cursor-ink.js"></script>
 
 </body>
+
 </html>
