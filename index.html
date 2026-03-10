@@ -168,6 +168,14 @@ cursor:pointer;
 
 }
 
+/* eivyx文字用の切れ防止 */
+h1#main-title, h1.glitch {
+  font-size: 5vw;         /* 画面幅に応じて文字サイズ */
+  line-height: 1.2;       /* 行間 */
+  overflow: visible;      /* 文字切れ防止 */
+  white-space: nowrap;     /* 改行せず1行で表示 */
+}
+
 </style>
 
 </head>
